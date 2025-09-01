@@ -1,0 +1,29 @@
+# Event details for the Connecticut Yankee's Dream project
+
+- id: 1
+  name: 'Signing of the Treaty on the Non-Proliferation of Nuclear Weapons (NPT)'
+  date: '1968-07-01'
+  time: '15:00'
+  location: 'London, Moscow, Washington D.C.'
+  description: 'Major world powers sign the NPT, aiming to prevent the spread of nuclear weapons.'
+
+- id: 2
+  name: 'Independence of the Democratic Republic of the Congo'
+  date: '1960-06-30'
+  time: '10:00'
+  location: 'Kinshasa, Congo'
+  description: 'Congo gains independence from Belgium, marking a major moment in African decolonization.'
+
+- id: 3
+  name: 'Fall of Baghdad during the Iraq War'
+  date: '2003-04-09'
+  time: '17:00'
+  location: 'Baghdad, Iraq'
+  description: "Coalition forces capture Baghdad, leading to the toppling of Saddam Hussein's regime."
+
+- id: 4
+  name: 'End of Apartheid in South Africa'
+  date: '1994-04-27'
+  time: '08:00'
+  location: 'Pretoria, South Africa'
+  description: 'South Africa holds its first multiracial democratic elections, ending decades of apartheid.'
