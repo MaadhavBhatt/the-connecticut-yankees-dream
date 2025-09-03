@@ -92,6 +92,10 @@ a {
 
   background-color: rgb(163, 50, 50);
   text-align: center;
+
+  & a {
+    text-decoration: underline;
+  }
 }
 
 header {
