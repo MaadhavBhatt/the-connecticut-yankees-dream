@@ -6,19 +6,24 @@
     </header>
 
     <CurvedCarousel :yearVsEventCount="yearVsEventCount" />
+    <YearCard v-if="displayedYear" :year="displayedYear"
+      :events="yearVsEventCount.find(y => y.year === displayedYear).events" />
   </div>
 </template>
 
 <script>
 import CurvedCarousel from './components/CurvedCarousel.vue'
+import YearCard from './components/YearCard.vue'
 
 export default {
   name: 'App',
   components: {
-    CurvedCarousel
+    CurvedCarousel,
+    YearCard
   },
   data() {
     return {
+      displayedYear: null,
       yearVsEventCount: [
         { year: 2024, events: ["Event 1", "Event 2"] },
         { year: 2023, events: ["Event 3"] },
@@ -44,6 +49,16 @@ export default {
   padding: 0;
   box-sizing: border-box;
   font-family: var(--font-family);
+}
+
+a {
+  color: #eee;
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+  }
 }
 
 #app {
