@@ -5,7 +5,8 @@
       <p>Welcome to the future, Hank Morgan!</p>
     </header>
 
-    <CurvedCarousel :yearVsEventCount="yearVsEventCount" @year-selected="displayedYear = $event" />
+    <CurvedCarousel :yearVsEventCount="yearVsEventCount"
+      @year-selected="displayedYear = displayedYear == $event ? null : $event" />
     <YearCard v-if="displayedYear" :year="displayedYear"
       :events="yearVsEventCount.find(y => y.year === displayedYear).events" />
   </div>
