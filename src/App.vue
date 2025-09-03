@@ -20,14 +20,14 @@ export default {
   data() {
     return {
       yearVsEventCount: [
-        { year: 2024, count: 5 },
-        { year: 2023, count: 10 },
-        { year: 2022, count: 15 },
-        { year: 2021, count: 20 },
-        { year: 2020, count: 25 },
-        { year: 2019, count: 30 },
-        { year: 2018, count: 35 },
-        { year: 2017, count: 40 },
+        { year: 2024, events: ["Event 1", "Event 2"] },
+        { year: 2023, events: ["Event 3"] },
+        { year: 2022, events: ["Event 4"] },
+        { year: 2021, events: ["Event 5"] },
+        { year: 2020, events: ["Event 6"] },
+        { year: 2019, events: ["Event 7"] },
+        { year: 2018, events: ["Event 8", "Event 9"] },
+        { year: 2017, events: ["Event 10", "Event 11"] },
       ]
     }
   }

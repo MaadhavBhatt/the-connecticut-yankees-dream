@@ -2,7 +2,7 @@
   <div class="carousel">
     <li v-for="(item, index) in yearVsEventCount" :key="index">
       <h2>{{ item.year }}</h2>
-      <p>{{ item.count }} events</p>
+      <p>{{ item.events.length }} event{{ item.events.length !== 1 ? 's' : '' }}</p>
     </li>
   </div>
 </template>
