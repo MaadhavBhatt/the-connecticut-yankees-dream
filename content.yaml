@@ -1,29 +1,84 @@
 # Event details for the Connecticut Yankee's Dream project
 
 - id: 1
-  name: 'Signing of the Treaty on the Non-Proliferation of Nuclear Weapons (NPT)'
+  title: 'Signing of the Treaty on the Non-Proliferation of Nuclear Weapons (NPT)'
   date: '1968-07-01'
   time: '15:00'
   location: 'London, Moscow, Washington D.C.'
   description: 'Major world powers sign the NPT, aiming to prevent the spread of nuclear weapons.'
 
 - id: 2
-  name: 'Independence of the Democratic Republic of the Congo'
+  title: 'Independence of the Democratic Republic of the Congo'
   date: '1960-06-30'
   time: '10:00'
   location: 'Kinshasa, Congo'
   description: 'Congo gains independence from Belgium, marking a major moment in African decolonization.'
 
 - id: 3
-  name: 'Fall of Baghdad during the Iraq War'
+  title: 'Fall of Baghdad during the Iraq War'
   date: '2003-04-09'
   time: '17:00'
   location: 'Baghdad, Iraq'
   description: "Coalition forces capture Baghdad, leading to the toppling of Saddam Hussein's regime."
 
 - id: 4
-  name: 'End of Apartheid in South Africa'
+  title: 'End of Apartheid in South Africa'
   date: '1994-04-27'
   time: '08:00'
   location: 'Pretoria, South Africa'
   description: 'South Africa holds its first multiracial democratic elections, ending decades of apartheid.'
+- id: 5
+  title: 'Fall of the Berlin Wall'
+  date: '1989-11-09'
+  time: '18:30'
+  location: 'Berlin, Germany'
+  description: 'The Berlin Wall falls, symbolizing the end of the Cold War and German reunification.'
+
+- id: 6
+  title: 'Chernobyl Nuclear Disaster'
+  date: '1986-04-26'
+  time: '01:23'
+  location: 'Pripyat, Ukrainian SSR, Soviet Union'
+  description: 'The worst nuclear disaster in history occurs at the Chernobyl Nuclear Power Plant.'
+
+- id: 7
+  title: 'Rwandan Genocide Begins'
+  date: '1994-04-07'
+  time: '20:30'
+  location: 'Kigali, Rwanda'
+  description: 'Beginning of the Rwandan genocide that claimed approximately 800,000 lives.'
+
+- id: 8
+  title: 'Indian Independence'
+  date: '1947-08-15'
+  time: '00:00'
+  location: 'Delhi, India'
+  description: 'India gains independence from British rule after nearly two centuries of colonization.'
+
+- id: 9
+  title: 'Tiananmen Square Protests'
+  date: '1989-06-04'
+  time: '01:00'
+  location: 'Beijing, China'
+  description: 'Military suppression of student-led demonstrations calling for democracy in China.'
+
+- id: 10
+  title: 'Formation of the European Union'
+  date: '1993-11-01'
+  time: '00:00'
+  location: 'Maastricht, Netherlands'
+  description: 'The Maastricht Treaty comes into effect, officially establishing the European Union.'
+
+- id: 11
+  title: 'Cuban Missile Crisis'
+  date: '1962-10-16'
+  time: '09:00'
+  location: 'Cuba/Global'
+  description: 'Thirteen-day confrontation between the US and Soviet Union, bringing the world to the brink of nuclear war.'
+
+- id: 12
+  title: 'Cultural Revolution Begins in China'
+  date: '1966-05-16'
+  time: '12:00'
+  location: 'Beijing, China'
+  description: 'Mao Zedong launches the Cultural Revolution, causing major social upheaval in China.'
