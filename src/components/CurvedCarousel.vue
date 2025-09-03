@@ -1,27 +1,21 @@
 <template>
   <div class="carousel">
-    <li>
-      <h2>2016</h2>
-      <p>30 events</p>
-    </li>
-    <li>
-      <h2>2015</h2>
-      <p>25 events</p>
-    </li>
-    <li>
-      <h2>2014</h2>
-      <p>20 events</p>
-    </li>
-    <li>
-      <h2>2013</h2>
-      <p>15 events</p>
+    <li v-for="(item, index) in yearVsEventCount" :key="index">
+      <h2>{{ item.year }}</h2>
+      <p>{{ item.count }} events</p>
     </li>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'CurvedCarousel'
+  name: 'CurvedCarousel',
+  props: {
+    yearVsEventCount: {
+      type: Array,
+      required: true
+    }
+  },
 }
 </script>
 

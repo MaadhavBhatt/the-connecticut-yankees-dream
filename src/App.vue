@@ -5,7 +5,7 @@
       <p>Welcome to the future, Hank Morgan!</p>
     </header>
 
-    <CurvedCarousel />
+    <CurvedCarousel :yearVsEventCount="yearVsEventCount" />
   </div>
 </template>
 
@@ -16,6 +16,20 @@ export default {
   name: 'App',
   components: {
     CurvedCarousel
+  },
+  data() {
+    return {
+      yearVsEventCount: [
+        { year: 2024, count: 5 },
+        { year: 2023, count: 10 },
+        { year: 2022, count: 15 },
+        { year: 2021, count: 20 },
+        { year: 2020, count: 25 },
+        { year: 2019, count: 30 },
+        { year: 2018, count: 35 },
+        { year: 2017, count: 40 },
+      ]
+    }
   }
 }
 </script>
