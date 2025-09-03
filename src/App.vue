@@ -1,5 +1,9 @@
 <template>
   <div id="app">
+    <span class="banner">Add events by submitting a <a
+        href="https://github.com/MaadhavBhatt/the-connecticut-yankees-dream/edit/main/content.yaml"
+        target="_blank">PR</a></span>
+
     <header>
       <h1>The Connecticut Yankee's Dream</h1>
       <p>Welcome to the future, Hank Morgan!</p>
@@ -77,6 +81,17 @@ a {
   min-height: 100vh;
   background-color: #333;
   color: #eee;
+}
+
+.banner {
+  position: absolute;
+  top: 0;
+
+  padding: 1rem 0;
+  width: 100%;
+
+  background-color: rgb(163, 50, 50);
+  text-align: center;
 }
 
 header {
