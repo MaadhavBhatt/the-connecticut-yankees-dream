@@ -14,6 +14,7 @@
 <script>
 import CurvedCarousel from './components/CurvedCarousel.vue'
 import YearCard from './components/YearCard.vue'
+import eventService from './services/eventService.js'
 
 export default {
   name: 'App',
@@ -24,16 +25,18 @@ export default {
   data() {
     return {
       displayedYear: null,
-      yearVsEventCount: [
-        { year: 2024, events: ["Event 1", "Event 2"] },
-        { year: 2023, events: ["Event 3"] },
-        { year: 2022, events: ["Event 4"] },
-        { year: 2021, events: ["Event 5"] },
-        { year: 2020, events: ["Event 6"] },
-        { year: 2019, events: ["Event 7"] },
-        { year: 2018, events: ["Event 8", "Event 9"] },
-        { year: 2017, events: ["Event 10", "Event 11"] },
-      ]
+      yearVsEventCount: []
+    }
+  },
+  async created() {
+    try {
+      const events = await eventService.fetchEvents('/content.yaml');
+      this.yearVsEventCount = Array.from(events.entries()).map(([year, events]) => ({
+        year,
+        events: events.map(event => event.title)
+      }));
+    } catch (error) {
+      console.error('Error fetching events:', error);
     }
   }
 }
