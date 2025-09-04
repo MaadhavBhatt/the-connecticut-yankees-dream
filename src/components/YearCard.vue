@@ -2,7 +2,7 @@
   <div class="year-card">
     <ul class="event-list">
       <li v-for="(event, index) in events" :key="index">
-        <a target="_blank" :href="event.link || '#'">{{ event.title }}</a>
+        <a :target="event.link ? '_blank' : '_self'" :href="event.link || '#'">{{ event.title }}</a>
       </li>
     </ul>
   </div>
