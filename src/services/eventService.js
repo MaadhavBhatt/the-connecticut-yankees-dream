@@ -15,7 +15,7 @@ const eventService = {
     try {
       const response = await fetch(filePath);
       if (!response.ok) {
-        throw new Error(`Failed to fetch events: ${response.status}`);
+        throw new Error(`Failed to fetch events from file: ${response.status}`);
       }
 
       const yamlText = await response.text();
@@ -24,7 +24,7 @@ const eventService = {
       // Process events if needed (e.g., formatting dates, adding IDs, etc.)
       return this.processEvents(events, options);
     } catch (error) {
-      console.error('Error fetching events:', error);
+      console.error('Error fetching events from file:', error);
       throw error;
     }
   },
