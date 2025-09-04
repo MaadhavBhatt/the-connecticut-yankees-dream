@@ -8,7 +8,10 @@ const eventService = {
    * @param {string} filePath - Path to the YAML file
    * @returns {Promise<Array>} - Array of event objects
    */
-  async fetchEvents(filePath) {
+  async fetchEvents(
+    filePath,
+    options = { chronological: true, sortByYear: true }
+  ) {
     try {
       const response = await fetch(filePath);
       if (!response.ok) {
@@ -19,7 +22,7 @@ const eventService = {
       const events = yaml.load(yamlText);
 
       // Process events if needed (e.g., formatting dates, adding IDs, etc.)
-      return this.processEvents(events);
+      return this.processEvents(events, options);
     } catch (error) {
       console.error('Error fetching events:', error);
       throw error;
@@ -31,7 +34,10 @@ const eventService = {
    * @param {Array} rawEvents - Events from YAML file
    * @returns {Array} - Processed events
    */
-  processEvents(rawEvents) {
+  processEvents(
+    rawEvents,
+    options = { chronological: true, sortByYear: true }
+  ) {
     if (!rawEvents || !Array.isArray(rawEvents)) {
       return [];
     }
@@ -47,6 +53,12 @@ const eventService = {
       year: event.date ? new Date(event.date).getFullYear() : null,
     }));
 
+    rawEvents.sort((a, b) => new Date(a.date) - new Date(b.date));
+
+    if (!options.sortByYear) {
+      return rawEvents;
+    }
+
     // Convert rawEvents from an Array of Objects to a Map from years to Arrays of event Objects
     let eventsByYear = new Map();
     rawEvents.forEach((event) => {
@@ -57,6 +69,13 @@ const eventService = {
         eventsByYear.get(event.year).push(event);
       }
     });
+
+    // Sort years chunks in chronological or reverse chronological order
+    eventsByYear = new Map(
+      [...eventsByYear.entries()].sort((a, b) =>
+        options.chronological ? a[0] - b[0] : b[0] - a[0]
+      )
+    );
 
     // Sort events within years
     eventsByYear.forEach((events) => {

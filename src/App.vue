@@ -33,7 +33,7 @@ export default {
   },
   async created() {
     try {
-      const events = await eventService.fetchEvents('/content.yaml');
+      const events = await eventService.fetchEvents('/content.yaml', { chronological: false, sortByYear: true });
       this.yearVsEventCount = Array.from(events.entries()).map(([year, events]) => ({
         year,
         events: events.map(event => ({ title: event.title, link: event.link }))
