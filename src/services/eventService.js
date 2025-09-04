@@ -42,6 +42,7 @@ const eventService = {
       date: event.date,
       location: event.location,
       description: event.description,
+      link: event.link,
 
       year: event.date ? new Date(event.date).getFullYear() : null,
     }));

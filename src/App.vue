@@ -38,7 +38,7 @@ export default {
       const events = await eventService.fetchEvents('/content.yaml');
       this.yearVsEventCount = Array.from(events.entries()).map(([year, events]) => ({
         year,
-        events: events.map(event => event.title)
+        events: events.map(event => ({ title: event.title, link: event.link }))
       }));
     } catch (error) {
       console.error('Error fetching events:', error);
