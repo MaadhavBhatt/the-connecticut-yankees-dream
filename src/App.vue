@@ -33,7 +33,7 @@ export default {
   },
   async created() {
     try {
-      const events = await eventService.fetchEvents('/content.yaml', { chronological: false, sortByYear: true });
+      const events = await eventService.fetchEvents('./content/content.yaml', { chronological: false, sortByYear: true });
       this.yearVsEventCount = Array.from(events.entries()).map(([year, events]) => ({
         year,
         events: events.map(event => ({ title: event.title, link: event.link }))
@@ -47,7 +47,7 @@ export default {
       return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
     },
     getPRLink(id) {
-      return `https://github.com/MaadhavBhatt/the-connecticut-yankees-dream/new/main/content?filename=new-event-${id}.yaml&value=%23%20To%20add%20a%20new%20historical%20event%2C%20fill%20in%20the%20template%20below%20and%20submit%20a%20pull%20request.%0A%0A-%20id:%20${id}%0A%20%20title:%20'Event%20Title'%0A%20%20date:%20'YYYY-MM-DD'%0A%20%20time:%20'HH:MM'%0A%20%20location:%20'Location'%0A%20%20description:%20'Brief%20description%20of%20the%20event.'%0A%20%20link:%20'https://example.com'`;
+      return `https://github.com/MaadhavBhatt/the-connecticut-yankees-dream/new/main/src/content?filename=new-event-${id}.yaml&value=%23%20To%20add%20a%20new%20historical%20event%2C%20fill%20in%20the%20template%20below%20and%20submit%20a%20pull%20request.%0A%0A-%20id:%20${id}%0A%20%20title:%20'Event%20Title'%0A%20%20date:%20'YYYY-MM-DD'%0A%20%20time:%20'HH:MM'%0A%20%20location:%20'Location'%0A%20%20description:%20'Brief%20description%20of%20the%20event.'%0A%20%20link:%20'https://example.com'`;
     }
   }
 }

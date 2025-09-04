@@ -8,12 +8,10 @@ module.exports = defineConfig({
     plugins: [
       new CopyWebpackPlugin({
         patterns: [
-          // Copy to dist root (for build output)
-          { from: path.resolve(__dirname, 'content.yaml'), to: '' },
-          // Optionally copy to public folder (for dev server or static access)
+          // Copy all files from content directory to dist/content (for build output)
           {
-            from: path.resolve(__dirname, 'content.yaml'),
-            to: path.resolve(__dirname, 'public/content.yaml'),
+            from: path.resolve(__dirname, 'src/content'),
+            to: path.resolve(__dirname, 'dist/content'),
           },
         ],
       }),
