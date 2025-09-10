@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <span class="banner">Add events by submitting a <a :href="getPRLink(createId())" target="_blank">PR</a></span>
+    <span class="banner">Add events by submitting a
+      <a :href="getPRLink(createId())" target="_blank">PR</a></span>
 
     <header>
       <h1>The Connecticut Yankee's Dream</h1>
@@ -10,26 +11,26 @@
     <CurvedCarousel :yearVsEventCount="yearVsEventCount"
       @year-selected="displayedYear = displayedYear == $event ? null : $event" />
     <YearCard v-if="displayedYear" :year="displayedYear"
-      :events="yearVsEventCount.find(y => y.year === displayedYear).events" />
+      :events="yearVsEventCount.find((y) => y.year === displayedYear).events" />
   </div>
 </template>
 
 <script>
-import CurvedCarousel from './components/CurvedCarousel.vue'
-import YearCard from './components/YearCard.vue'
-import eventService from './services/eventService.js'
+import CurvedCarousel from './components/CurvedCarousel.vue';
+import YearCard from './components/YearCard.vue';
+import eventService from './services/eventService.js';
 
 export default {
   name: 'App',
   components: {
     CurvedCarousel,
-    YearCard
+    YearCard,
   },
   data() {
     return {
       displayedYear: null,
-      yearVsEventCount: []
-    }
+      yearVsEventCount: [],
+    };
   },
   async created() {
     try {
@@ -44,13 +45,16 @@ export default {
   },
   methods: {
     createId() {
-      return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+      return (
+        Math.random().toString(36).substring(2, 15) +
+        Math.random().toString(36).substring(2, 15)
+      );
     },
     getPRLink(id) {
       return `https://github.com/MaadhavBhatt/the-connecticut-yankees-dream/new/main/src/content?filename=new-event-${id}.yaml&value=%23%20To%20add%20a%20new%20historical%20event%2C%20fill%20in%20the%20template%20below%20and%20submit%20a%20pull%20request.%0A%0A-%20id:%20${id}%0A%20%20title:%20'Event%20Title'%0A%20%20date:%20'YYYY-MM-DD'%0A%20%20time:%20'HH:MM'%0A%20%20location:%20'Location'%0A%20%20description:%20'Brief%20description%20of%20the%20event.'%0A%20%20link:%20'https://example.com'`;
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style>
