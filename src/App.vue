@@ -34,10 +34,21 @@ export default {
   },
   async created() {
     try {
-      const events = await eventService.fetchEvents('./content/content.yaml', { chronological: false, sortByYear: true });
-      this.yearVsEventCount = Array.from(events.entries()).map(([year, events]) => ({
+      const fileNames = await fetch('./content/index.json').then((res) => res.json());
+
+      const events = await eventService.fetchEvents('./content', {
+        chronological: false,
+        sortByYear: true,
+        isDirectory: true,
+        fileNames,
+      });
+
+      this.yearVsEventCount = Array.from(events).map(([year, events]) => ({
         year,
-        events: events.map(event => ({ title: event.title, link: event.link }))
+        events: events.map((event) => ({
+          title: event.title,
+          link: event.link,
+        })),
       }));
     } catch (error) {
       console.error('Error fetching events:', error);

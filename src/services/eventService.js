@@ -3,38 +3,20 @@ import yaml from 'js-yaml';
 // A service to fetch content from the YAML file and convert it into a format for the Vue files to handle and display on the webpage.
 
 const eventService = {
-  /**
-   * Fetches events from a YAML file
-   * @param {string} filePath - Path to the YAML file
-   * @returns {Promise<Array>} - Array of event objects
-   */
-  async fetchEvents(
-    filePath,
-    options = { chronological: true, sortByYear: true }
-  ) {
+  async getYAMLText(filePath) {
     try {
       const response = await fetch(filePath);
       if (!response.ok) {
-        throw new Error(`Failed to fetch events from file: ${response.status}`);
+        throw new Error(`Failed to fetch file text: ${response.status}`);
       }
-
-      const yamlText = await response.text();
-      const events = yaml.load(yamlText);
-
-      // Process events if needed (e.g., formatting dates, adding IDs, etc.)
-      return this.processEvents(events, options);
+      return await response.text();
     } catch (error) {
-      console.error('Error fetching events from file:', error);
+      console.error('Error fetching file text:', error);
       throw error;
     }
   },
 
-  /**
-   * Process raw event data into the format needed by Vue components
-   * @param {Array} rawEvents - Events from YAML file
-   * @returns {Array} - Processed events
-   */
-  processEvents(
+  processRawEvents(
     rawEvents,
     options = { chronological: true, sortByYear: true }
   ) {
@@ -83,6 +65,69 @@ const eventService = {
     });
 
     return eventsByYear;
+  },
+
+  async _fetchEventsFromFile(filePath, options) {
+    try {
+      const response = await fetch(filePath);
+      if (!response.ok) {
+        throw new Error(`Failed to fetch events: ${response.status}`);
+      }
+
+      const yamlText = await response.text();
+      const events = yaml.load(yamlText);
+      console.log(events);
+
+      // Process events
+      return this.processRawEvents(events, options);
+    } catch (error) {
+      console.error('Error fetching events:', error);
+      throw error;
+    }
+  },
+
+  async fetchEvents(
+    dirPath,
+    options = {
+      chronological: true,
+      sortByYear: true,
+      isDirectory: false,
+      fileNames: [],
+    }
+  ) {
+    // If directory and no file names provided, return empty array
+    if (options.isDirectory && options.fileNames.length === 0) {
+      return [];
+    }
+
+    // Ensure all file names have .yaml extension
+    options.fileNames.forEach((fileName, index) => {
+      if (!fileName.endsWith('.yaml') && !fileName.endsWith('.yml')) {
+        options.fileNames[index] = `${fileName}.yaml`;
+      }
+    });
+
+    if (options.isDirectory) {
+      // Combine all YAML texts
+      const allYAMLTexts = await Promise.all(
+        options.fileNames.map((fileName) =>
+          this.getYAMLText(`${dirPath}/${fileName}`)
+        )
+      );
+      // Parse each YAML file separately and flatten the results
+      let allEvents = [];
+      allYAMLTexts.forEach((yamlText) => {
+        const events = yaml.load(yamlText);
+        if (Array.isArray(events)) {
+          allEvents.push(...events);
+        } else if (events) {
+          allEvents.push(events);
+        }
+      });
+      return this.processRawEvents(allEvents, options);
+    } else {
+      return this._fetchEventsFromFile(dirPath, options);
+    }
   },
 };
 
